@@ -1,0 +1,128 @@
+// # # # # # # # # # # # # # # # # # # # COLORS # # # # # # # # # # # # # # # # # # # # #
+
+$clr-black: rgb(45, 45, 45);
+$clr-white: rgb(245, 245, 245);
+$clr-grey: rgb(180, 180, 180);
+$clr-bluel: rgb(109, 160, 255);
+$clr-blued: rgb(49, 85, 190);
+$clr-red: rgb(199, 11, 11);
+
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+
+
+// # # # # # # # # # # # # # # # LOCAL PROJECT VARIABLES # # # # # # # # # # # # # # # # #
+
+
+
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+
+
+
+// # # # # # # # # # # # # # # # # # MIXINS # # # # # # # # # # # # # # # # # # # # # # # 
+
+@mixin FullSize($size: 100%) {
+   width: $size;
+   height: $size;
+}
+
+@mixin SetWidth($minPX, $curr, $maxPX) {
+   width: $curr;
+   min-width: #{$minPX}px;
+   max-width: #{$maxPX}px;
+}
+
+@mixin ResetWidth {
+   min-width: auto;
+   max-width: none;
+}
+
+@mixin NotMargin($marginBottomEM: 0, $marginTopEM: 0, $notWho: last-child) {
+   &:not(:#{$notWho}) {
+      margin-bottom: #{$marginBottomEM}em;
+      margin-top: #{$marginTopEM}em;
+   }
+}
+
+@mixin Center($val) {
+   width: $val;
+   margin: 0 auto;
+}
+
+@mixin Clamp($min, $vw, $max) {
+   font-size: clamp(#{$min}rem, #{$vw}vw, #{$max}rem);
+}
+
+@mixin Rectangle($val) {
+   display: block;
+   height: $val;
+   width: $val;
+}
+
+@mixin Flex($justify: none, $align: none, $dir: none) {
+   display: flex;
+   justify-content: FlexFunc($justify);
+   align-items: FlexFunc($align);
+   flex-direction: FlexDirFunc($dir);
+}
+
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+
+
+
+// # # # # # # # # # # # # # # # HELPER FUNCTIONS # # # # # # # # # # # # # # # # # # # # #
+
+@function FlexFunc($val) {
+   $finalVal: none;
+
+   @if $val == sb { $finalVal: space-between; }
+   @else if $val == c { $finalVal: center }
+   @else if $val == sa { $finalVal: space-around; }
+   @else if $val == fe { $finalVal: flex-end; }
+   @else if $val == fs { $finalVal: flex-start; }
+   @else if $val == st { $finalVal: stretch; }
+
+   @return $finalVal;
+}
+@function FlexDirFunc($val) {
+   $finalVal: row;
+
+   @if $val == c { $finalVal: column; }
+   @else if $val == cr { $finalVal: column-reverse }
+   @else if $val == rr { $finalVal: row-reverse; }
+   
+   @return $finalVal;
+}
+
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+
+
+
+// # # # # # # # # # # # # # # # # LOCAL PROJECT MIXINS # # # # # # # # # # # # # # # # #
+
+@mixin ButtonStyle($bgClr, $hoverClr) {
+   background: $bgClr;
+   border-radius: .25em;
+   font-family: 'Montserrat', sans-serif;
+   padding: 1em 2em;
+   font-size: 1.25rem;
+   color: $clr-white;
+   outline: 0;
+   border: 0;
+   font-weight: 500;
+   cursor: pointer;
+   transition: .3s;
+
+   &:hover {
+      background: $hoverClr;
+   }
+}
+
+// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

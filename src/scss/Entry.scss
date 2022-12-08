@@ -1,0 +1,131 @@
+@import './config';
+
+section.entry {
+    section.socials {
+        position: absolute;
+        right: 0;
+        top: 1rem;
+
+        i {
+            font-size: 2rem;
+            cursor: pointer;
+            margin-right: .5em;
+        }
+    }
+
+    section.input-options {
+        background: rgb(38, 38, 51);
+        height: max-content;
+        padding: 1.5em;
+        border-radius: 1em;
+
+        form {
+            div.checkbox-div {
+                @include Flex(none, c);
+                margin: 1.5em 0;
+
+                input {
+                    @include Rectangle(25px);
+                    border-radius: .25em;
+                    outline: 0;
+                    border: 2px solid royalblue;
+                    cursor: pointer;
+                }
+
+                label {
+                    margin-left: .5em;
+                    font-weight: 500;
+                    cursor: pointer;
+                    opacity: .8;
+                    font-size: 1rem;
+                }
+            }
+
+            input[type='number'] {
+                display: block;
+                width: 100%;
+                font-size: 1.2rem;
+                padding: 1em;
+                background: #303030;
+                background: rgb(22, 24, 46);
+                outline: 0;
+                border: 1px solid transparent;
+                border-radius: .2em;
+                transition: .3s;
+                color: $clr-white;
+
+                &:first-child { margin-bottom: .25em; }
+
+                &::placeholder {
+                    opacity: .8;
+                    font-size: 1rem;
+                }
+
+                &::-webkit-inner-spin-button {
+                    appearance: none;
+                }
+
+                &::-webkit-outer-spin-button {
+                    appearance: none;
+                }
+            }
+
+            button {
+                margin-top: 1em;
+                @include ButtonStyle($clr-red, crimson);
+            }
+        }
+
+
+        section.image-info {
+            @include Flex(sb);
+
+            figure {
+                width: 50%;
+                margin-bottom: 1em;
+    
+                img {
+                    width: 100%;
+                }
+            }
+
+        }
+
+        
+        div.allowed {
+            border-left: 2px solid $clr-bluel;
+            padding-left: .75em;
+    
+            h2 {
+                font-weight: 300;
+                margin-bottom: .25em;
+                font-size: 1.5rem;
+            }
+        }
+    
+
+        input[type='file'] {
+            color: transparent;
+            overflow: hidden;
+            margin: 2em 0;
+    
+            &::file-selector-button {
+                background: $clr-blued;
+                border-radius: .25em;
+                font-family: 'Montserrat', sans-serif;
+                padding: 1em 2em;
+                font-size: 1.25rem;
+                color: $clr-white;
+                outline: 0;
+                border: 0;
+                font-weight: 500;
+                cursor: pointer;
+                transition: .3s;
+    
+                &:hover {
+                    background: royalblue;
+                }
+            }
+        }
+    }
+}
