@@ -48,7 +48,7 @@ section.entry {
 
                 &::placeholder {
                     opacity: .8;
-                    @include Clamp(.8, 1.5, .9);
+                    @include Clamp(.85, 1.5, 1);
                 }
 
                 &::-webkit-inner-spin-button {

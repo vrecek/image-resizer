@@ -9,6 +9,7 @@ const program = new App_1.default(), load = new Client_1.default('load-bg'), lef
 load.defaultStyleDots({
     position: 'fixed'
 });
+bindSocialLinks();
 selectInput.onchange = async (e) => {
     load.append(document.body);
     program.removePreview()
@@ -76,3 +77,8 @@ const removeParagraph = () => {
         pEmpty.remove();
 };
 const isParagraph = () => !!document.querySelector('p.empty');
+function bindSocialLinks() {
+    const socials = Array.from(document.querySelectorAll('.socials > i')), urls = ['https://github.com/vrecek', 'https://github.com/vrecek/image-resizer'];
+    for (let i = 0; i < socials.length; i++)
+        socials[i].onclick = () => window.open(urls[i], '_blank');
+}

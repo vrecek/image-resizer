@@ -14,7 +14,7 @@ load.defaultStyleDots({
     position: 'fixed'
 })
 
-
+bindSocialLinks()
 
 selectInput.onchange = async (e: Event) => {
     load.append(document.body)
@@ -124,6 +124,8 @@ const downloadFunc = async (e: MouseEvent, resizedSource64: string): Promise<voi
     program.popupBox()
 }
 
+
+
 const createEmptyParagraph = (): void => {
     const p: HTMLElement = document.createElement('p')
     p.className = 'empty'
@@ -138,3 +140,12 @@ const removeParagraph = (): void => {
 }
 
 const isParagraph = (): boolean => !!document.querySelector('p.empty')
+
+function bindSocialLinks() {
+    const socials: HTMLElement[] = Array.from(document.querySelectorAll('.socials > i')),
+          urls: string[] = ['https://github.com/vrecek', 'https://github.com/vrecek/image-resizer']
+
+
+    for(let i = 0; i < socials.length; i++)
+        socials[i].onclick = () => window.open(urls[i], '_blank')
+}
