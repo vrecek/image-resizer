@@ -39,6 +39,8 @@ selectInput.onchange = async (e: Event) => {
         return
     }
 
+    t.value = ''
+
     const src = await program.saveImage(file),
           info: IInfoResult = await program.getImageInfo()
 

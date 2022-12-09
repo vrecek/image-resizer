@@ -34,28 +34,44 @@ body {
     h1 {
         text-align: center;
         font-weight: 700;
-        font-size: 3rem;
         letter-spacing: 1px;
+        @include Clamp(1.5, 3.5, 2.75);
         margin: .5em 0;
+        margin-bottom: 1em;
+    }
+
+    section.socials {
+        position: absolute;
+        right: 0;
+        top: 1rem;
+
+        i {
+            cursor: pointer;
+            @include Clamp(1, 3, 2);
+            margin-right: .5em;
+        }
     }
 
     section.wrap {
         @include Flex(sa);
         width: 100%;
-        min-height: 85vh;
 
         section.entry,
         section.output {
             height: 100%;
             width: 40%;
+            min-width: 360px;
+            position: sticky;
+            top: 2em;
+            margin-bottom: 1em;
         }
 
         section.details,
         section.details-resized {
             p {
                 color: $clr-grey;
-                font-size: 1.15rem;
                 margin-bottom: .5em;
+                @include Clamp(.95, 1.75, 1.15);
 
                 span {
                     margin-left: .5em;
@@ -69,7 +85,7 @@ body {
             font-weight: 600;
             color: $clr-grey;
             margin-bottom: 1em;
-            font-size: 1rem;
+            @include Clamp(.9, 1.75, 1);
         }
     }
 

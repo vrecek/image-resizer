@@ -22,6 +22,7 @@ selectInput.onchange = async (e) => {
         load.remove();
         return;
     }
+    t.value = '';
     const src = await program.saveImage(file), info = await program.getImageInfo();
     const { width, height, type, name, size } = info, preview = program.createPreview(src, width, height, type, name, size), form = program.createForm(submitFunc);
     leftSection.appendChild(preview);

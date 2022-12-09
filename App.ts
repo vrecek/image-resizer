@@ -88,11 +88,13 @@ export default class App {
 
         const options = {}
 
-        const assignOption = (val: number) => {
+        const assignOption = (val: number): void => {
             Object.assign(options, {
-                height: val
+                height: val,
+                ignoreAspectRatio: true
             })
         }
+
 
         if(!asPx) {
             const {width, height} = await this.getImageInfo()
@@ -104,7 +106,9 @@ export default class App {
             if(y) assignOption(y)
         }
 
+
         await resize({
+            ...options,
             width: x,
             src: `${this.pathToImages}/${this.fileName}`,
             dst: `${this.pathToImages}/resized-${this.fileName}`
@@ -135,10 +139,9 @@ export default class App {
 
 
     public removeFiles(): this {
-        // remove all existing files in -images-
-        // td
-        fs.unlinkSync(`${this.pathToImages}/${this.fileName}`)
-        fs.unlinkSync(`${this.pathToImages}/resized-${this.fileName}`)
+        for(let x of fs.readdirSync(this.pathToImages)) 
+            fs.unlinkSync(`${this.pathToImages}/${x}`)
+        
 
         return this
     }

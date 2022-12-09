@@ -1,25 +1,14 @@
 @import './config';
 
 section.entry {
-    section.socials {
-        position: absolute;
-        right: 0;
-        top: 1rem;
-
-        i {
-            font-size: 2rem;
-            cursor: pointer;
-            margin-right: .5em;
-        }
-    }
-
     section.input-options {
         background: rgb(38, 38, 51);
-        height: max-content;
         padding: 1.5em;
-        border-radius: 1em;
+        border-radius: 1em;;
 
         form {
+            margin-top: 1em;
+            
             div.checkbox-div {
                 @include Flex(none, c);
                 margin: 1.5em 0;
@@ -37,14 +26,15 @@ section.entry {
                     font-weight: 500;
                     cursor: pointer;
                     opacity: .8;
-                    font-size: 1rem;
+                    @include Clamp(.9, 1.75, 1.1);
+
                 }
             }
 
             input[type='number'] {
                 display: block;
                 width: 100%;
-                font-size: 1.2rem;
+                @include Clamp(1, 1.75, 1.2);
                 padding: 1em;
                 background: #303030;
                 background: rgb(22, 24, 46);
@@ -58,7 +48,7 @@ section.entry {
 
                 &::placeholder {
                     opacity: .8;
-                    font-size: 1rem;
+                    @include Clamp(.8, 1.5, .9);
                 }
 
                 &::-webkit-inner-spin-button {
@@ -99,7 +89,7 @@ section.entry {
             h2 {
                 font-weight: 300;
                 margin-bottom: .25em;
-                font-size: 1.5rem;
+                @include Clamp(1.2, 2.5, 1.5);
             }
         }
     
@@ -114,7 +104,7 @@ section.entry {
                 border-radius: .25em;
                 font-family: 'Montserrat', sans-serif;
                 padding: 1em 2em;
-                font-size: 1.25rem;
+                @include Clamp(1, 2, 1.25);
                 color: $clr-white;
                 outline: 0;
                 border: 0;

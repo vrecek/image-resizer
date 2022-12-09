@@ -15,8 +15,8 @@ section.output {
         text-align: center;
         height: 70vh;
         @include Flex(c, c);
-        font-size: 2rem;
         font-weight: 700;
+        @include Clamp(1.5, 3, 2);
     }
 
     section.details-resized {

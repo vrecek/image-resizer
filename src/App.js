@@ -54,7 +54,8 @@ class App {
         const options = {};
         const assignOption = (val) => {
             Object.assign(options, {
-                height: val
+                height: val,
+                ignoreAspectRatio: true
             });
         };
         if (!asPx) {
@@ -68,6 +69,7 @@ class App {
                 assignOption(y);
         }
         await (0, easyimage_1.resize)({
+            ...options,
             width: x,
             src: `${this.pathToImages}/${this.fileName}`,
             dst: `${this.pathToImages}/resized-${this.fileName}`
@@ -88,10 +90,8 @@ class App {
         return true;
     }
     removeFiles() {
-        // remove all existing files in -images-
-        // td
-        fs_1.default.unlinkSync(`${this.pathToImages}/${this.fileName}`);
-        fs_1.default.unlinkSync(`${this.pathToImages}/resized-${this.fileName}`);
+        for (let x of fs_1.default.readdirSync(this.pathToImages))
+            fs_1.default.unlinkSync(`${this.pathToImages}/${x}`);
         return this;
     }
     isImage(file) {
